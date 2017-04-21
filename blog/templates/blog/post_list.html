@@ -1,64 +1,13 @@
-<!DOCTYPE html>
-{% load staticfiles %}
+{% extends 'blog/base.html' %}
 
-<html>
-
-	<head>
-		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-		<link rel="stylesheet" href="{% static 'css/blog.css' %}">
-		<link href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-		<title>Le contenu de la balise head ne s'affichera pas, c'est juste pour des infos et c'est normal - transmet la configuration de la page au navigateur - on y met le titre de la page en général</title>
-	</head>
-
-	<body>
-	    <div class="page-header">
-            <h1><a href="">Le Django blog de Mohamed</a></h1>
-        </div>
-
-        <br><br><br><br>
-
-        <div>
-<div class="content container">
-    <div class="row">
-        <div class="col-md-8">
-            {% for post in posts %}
-                <div class="post">
-                    <div class="date">
-                        {{ post.published_date }}
-                    </div>
-                    <h1><a href="">{{ post.title }}</a></h1>
-                    <p>{{ post.text|linebreaksbr }}</p>
-                </div>
-            {% endfor %}
-        </div>
-    </div>
-</div>
-        </div>
-
-        <br><br><br><br>
-
-
-
-
-      
-
-
-		<h1>Mon titre principal</h1>
-		<h2>Mon sous-titre</h2>
-		<h3>Mon sous-sous-titre</h3>
-		<em>Mon texte mis en avant</em>
-		<br>
-		<strong>Mon texte encore plus mis en avant</strong>
-		<br>
-		<p>Ma première ligne</p>
-		<p>Ma deuxième ligne</p>
-		<br>
-
-		<a href="https://djangogirls.org">link</a>
-		<ul><li>premier item</li><li>second item</li></ul>
-
-		<div>Ici une section au sein de la page</div>
-	</body>
-
-</html>
+{% block content %}
+	{% for post in posts %}
+    	<div class="post">
+        	<div class="date">
+            	{{ post.published_date }}
+        	</div>
+        	   	<h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+        	<p>{{ post.text|linebreaksbr }}</p>
+    	</div>
+	{% endfor %}
+{% endblock content %}
