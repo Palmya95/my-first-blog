@@ -1,0 +1,14 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+
+<h1>Posts de la categorie1</h1>
+{% if posts_categorie1 %}
+    <ul>
+        {% for postcat in posts_categorie1 %}
+            <li>{{ postcat }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+{% endblock %}

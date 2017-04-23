@@ -1,0 +1,43 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+
+<h1>Liste de categories</h1>
+
+    <ul>
+        {% for categor in liste_categories %}
+            <li>{{ categor }}</li>
+        {% endfor %}
+    </ul>
+
+
+
+<h1>Latest posts</h1>
+
+{% if latest_posts_list %}
+    <ul>
+        {% for post in latest_posts_list %}
+            <li>{{ post }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+
+{% endblock %}
+
+
+
+
+
+    <div class="post">
+        {% if post.published_date %}
+            <div class="date">
+                {{ post.latest_posts_list }}
+            </div>
+        {% endif %}
+        <h1>{{ post.title }}</h1>
+        <p>{{ post.text|linebreaksbr }}</p>
+    </div>
+    <div>
+        {{ post.published_date }}
+    </div>

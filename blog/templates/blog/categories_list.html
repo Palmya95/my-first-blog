@@ -1,0 +1,16 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+
+<h1>Liste de categories</h1>
+{% if latest_posts_list %}
+    
+    <ul>
+        {% for categor in liste_categories %}
+            <li>{{ categor }}</li>
+        {% endfor %}
+        </ul>
+        
+{% endif %}
+
+{% endblock %}
